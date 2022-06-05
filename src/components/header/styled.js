@@ -5,6 +5,13 @@ export const StyledHeader = styled.div`
     min-height: 50px;
     padding: 15px;
     justify-content: space-between;
+    border-radius: 2px;
+    box-shadow: 0 11px 50px 0 rgb(0 0 0 / 3%);
+    background-color: #fff;
+    font-size: 18px;
 `;
 
-export const StyledLink = styled.a``;
+export const StyledLink = styled.a`
+    text-decoration: underline;
+    font-weight: bold;
+`;

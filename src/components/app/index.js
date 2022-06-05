@@ -15,13 +15,48 @@ export const App = () => {
                     <SearchInput />
                 </Hero>
                 <GridLayout>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
+                    <Card>
+                        <img
+                            alt="img"
+                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
+                        />
+                    </Card>
+                    <Card>
+                        <img
+                            alt="img"
+                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
+                        />
+                    </Card>
+                    <Card>
+                        <img
+                            alt="img"
+                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
+                        />
+                    </Card>
+                    <Card>
+                        <img
+                            alt="img"
+                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
+                        />
+                    </Card>
+                    <Card>
+                        <img
+                            alt="img"
+                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
+                        />
+                    </Card>
+                    <Card>
+                        <img
+                            alt="img"
+                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
+                        />
+                    </Card>
+                    <Card>
+                        <img
+                            alt="img"
+                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
+                        />
+                    </Card>
                 </GridLayout>
             </StyledContentWrapper>
         </StyledPageWrapper>

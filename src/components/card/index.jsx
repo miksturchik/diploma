@@ -1,9 +1,12 @@
 import { StyledCard, StyledLikeBtn } from "./styled";
-
-export const Card = () => {
+import { Like } from "@styled-icons/boxicons-solid/Like";
+export const Card = ({ children }) => {
     return (
         <StyledCard>
-            <StyledLikeBtn />
+            {children}
+            <StyledLikeBtn>
+                <Like width={24} height={24} />
+            </StyledLikeBtn>
         </StyledCard>
     );
 };

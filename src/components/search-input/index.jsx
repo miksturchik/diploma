@@ -3,7 +3,7 @@ import { StyledSearchInput, StyledButton, StyledSearchWrapper } from "./styled";
 export const SearchInput = () => {
     return (
         <StyledSearchWrapper>
-            <StyledSearchInput />
+            <StyledSearchInput placeholder="Search query..." />
             <StyledButton>Search</StyledButton>
         </StyledSearchWrapper>
     );
