@@ -15,3 +15,9 @@ export const StyledLink = styled.a`
     text-decoration: underline;
     font-weight: bold;
 `;
+
+export const StyledBtn = styled.button`
+    background: none;
+    border: none;
+    font-weight: bold;
+`;

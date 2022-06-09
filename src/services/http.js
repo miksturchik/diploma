@@ -44,8 +44,16 @@ const makeFetch = (baseUrl) => async (path, params) => {
 const makeApiCall = makeFetch(API_URL);
 
 export const auth = async (code) => {
-    await makeFetch(`${GET_TOKEN_URL}&code=${code}`)("", {
+    return await makeFetch(`${GET_TOKEN_URL}${code}`)("", {
         method: "POST",
+        data: {
+            client_id: process.env.REACT_APP_ACCESS_KEY,
+            client_secret: process.env.REACT_APP_SECRET_KEY,
+            redirect_uri:
+                process.env.REACT_APP_REDIRECT_URI || window.location.origin,
+            code,
+            grant_type: "authorization_code",
+        },
     });
 };
 

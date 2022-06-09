@@ -1,20 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { searchPhotos } from "services/http";
 import { setSuggestions } from "services/localstorage";
 
 export function useSearhPhotos({ query, page, perPage }) {
     const [photos, setPhotos] = useState([]);
+
+    const fetchPhotos = useCallback(async () => {
+        const data = await searchPhotos({ query, page, perPage });
+        setPhotos(data?.results || []);
+    }, [query, page, perPage]);
+
     useEffect(() => {
         if (query) {
             setSuggestions(query);
-
-            searchPhotos({ query, page, perPage }).then((data) => {
-                setPhotos(data?.results);
-            });
+            fetchPhotos(query, page, perPage);
         } else {
             setPhotos([]);
         }
-    }, [query, page, perPage]);
+    }, [query, page, perPage, fetchPhotos]);
 
-    return photos;
+    return { photos, refetch: fetchPhotos };
 }
