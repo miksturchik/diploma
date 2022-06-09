@@ -1,62 +1,34 @@
-import React from "react";
-import { GridLayout } from "../grid-layout";
-import { Card } from "../card";
-import { Header } from "../header";
-import { Hero } from "../hero";
-import { SearchInput } from "../search-input";
+import React, { useState } from "react";
+import { GridLayout } from "components/grid-layout";
+import { Card } from "components/card";
+import { Header } from "components/header";
+import { Hero } from "components/hero";
+import { SearchInput } from "components/search-input";
 import { StyledPageWrapper, StyledContentWrapper } from "./styled";
+import { useSearhPhotos } from "hooks/use-search-photos";
 
 export const App = () => {
+    const [query, setQuery] = useState("");
+    const [page, setPage] = useState(1);
+    const pictures = useSearhPhotos({ query, page });
+
     return (
         <StyledPageWrapper>
             <StyledContentWrapper>
                 <Header />
                 <Hero>
-                    <SearchInput />
+                    <SearchInput onSearch={setQuery} />
                 </Hero>
                 <GridLayout>
-                    <Card>
-                        <img
-                            alt="img"
-                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
-                        />
-                    </Card>
-                    <Card>
-                        <img
-                            alt="img"
-                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
-                        />
-                    </Card>
-                    <Card>
-                        <img
-                            alt="img"
-                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
-                        />
-                    </Card>
-                    <Card>
-                        <img
-                            alt="img"
-                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
-                        />
-                    </Card>
-                    <Card>
-                        <img
-                            alt="img"
-                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
-                        />
-                    </Card>
-                    <Card>
-                        <img
-                            alt="img"
-                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
-                        />
-                    </Card>
-                    <Card>
-                        <img
-                            alt="img"
-                            src="https://static.photocdn.pt/images/articles/2019/02/07/Simple_Landscape_Photography_Tips_With_Tons_of_Impact-2.jpg"
-                        />
-                    </Card>
+                    {pictures.map(({ alt_description, urls }) => (
+                        <Card>
+                            <img
+                                key={alt_description}
+                                alt={alt_description}
+                                src={urls.small}
+                            />
+                        </Card>
+                    ))}
                 </GridLayout>
             </StyledContentWrapper>
         </StyledPageWrapper>

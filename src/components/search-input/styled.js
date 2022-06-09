@@ -20,8 +20,32 @@ export const StyledButton = styled.button`
     font-weight: bold;
     border-radius: 0 7px 7px 0;
 `;
+
 export const StyledSearchWrapper = styled.div`
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+`;
+
+export const StyledMenu = styled.ul`
+    display: ${({ open }) => (open ? "block" : "none")};
+    position: absolute;
+    z-index: 2;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+`;
+
+export const StyledMenuItem = styled.li`
+    cursor: pointer;
+    color: #9c9c9c;
+    padding: 5px 10px;
+    background-color: ${({ active }) => (active ? "#e9f6ee" : "none")};
+
+    &:hover {
+        background-color: #e9f6ee;
+    }
 `;

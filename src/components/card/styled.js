@@ -3,14 +3,19 @@ import styled from "styled-components";
 export const StyledCard = styled.div`
     position: relative;
     border-radius: 10px;
-    min-height: 200px;
     overflow: hidden;
     transition: all 0.5s;
 
+    display: grid;
+    grid-template-rows: 1fr auto;
+    break-inside: avoid;
+    margin-bottom: 20px;
+
     img {
-        display: flex;
+        display: block;
         width: 100%;
-        height: auto;
+        grid-row: 1 / -1;
+        grid-column: 1;
     }
 
     &:hover {
@@ -19,17 +24,17 @@ export const StyledCard = styled.div`
 `;
 
 export const StyledLikeBtn = styled.button`
+    outline: none;
     position: absolute;
     cursor: pointer;
     bottom: 10px;
     right: 10px;
-    color: #fff;
     border: none;
     background: transparent;
 
-    color: ${(props) => (props.active ? "#ed4956" : "inherit")};
+    color: ${(props) => (props.active ? "#ed4956" : " #fff")};
 
     &:hover {
-        color: #ed4956;
+        color: #ed4956 !important;
     }
 `;
