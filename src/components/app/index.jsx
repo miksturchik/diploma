@@ -22,18 +22,19 @@ export const App = () => {
                     <SearchInput onSearch={setQuery} />
                 </Hero>
                 <GridLayout>
-                    {photos.map(({ alt_description, urls }) => (
-                        <Card
-                            isAuthorized={isAuthorized}
-                            onPhotoUpdate={refetch}
-                        >
-                            <img
-                                key={alt_description}
-                                alt={alt_description}
-                                src={urls.small}
-                            />
-                        </Card>
-                    ))}
+                    {photos.map(
+                        ({ id, alt_description, urls, liked_by_user }) => (
+                            <Card
+                                key={id}
+                                id={id}
+                                isAuthorized={isAuthorized}
+                                onPhotoUpdate={refetch}
+                                likedByUser={liked_by_user}
+                            >
+                                <img alt={alt_description} src={urls.small} />
+                            </Card>
+                        ),
+                    )}
                 </GridLayout>
             </StyledContentWrapper>
         </StyledPageWrapper>

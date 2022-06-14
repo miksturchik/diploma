@@ -24,27 +24,27 @@ const makeFetch = (baseUrl) => async (path, params) => {
         ...params,
     });
 
-    const result = await fetch(request);
     let data;
 
     try {
+        const result = await fetch(request);
         data = await result.json();
+
+        if (result && result.status !== 200) {
+            throw data;
+        }
+        console.log(data);
+        return data;
     } catch (error) {
         //EMPTY RESPONSE BODY CAUSE ERROR IN result.json();
         data = {};
     }
-
-    if (result && result.status !== 200) {
-        throw data;
-    }
-
-    return data;
 };
 
 const makeApiCall = makeFetch(API_URL);
 
-export const auth = async (code) => {
-    return await makeFetch(`${GET_TOKEN_URL}${code}`)("", {
+export const auth = (code) =>
+    makeFetch(`${GET_TOKEN_URL}${code}`)("", {
         method: "POST",
         data: {
             client_id: process.env.REACT_APP_ACCESS_KEY,
@@ -55,20 +55,19 @@ export const auth = async (code) => {
             grant_type: "authorization_code",
         },
     });
-};
 
-export const searchPhotos = async ({ query, page = 1, perPage = 10 }) => {
-    return await makeApiCall(
+export const searchPhotos = ({ query, page = 1, perPage = 10 }) => {
+    return makeApiCall(
         `${SEARCH_PHOTOS}/?query=${query}&page=${page}&per_page=${perPage}`,
     );
 };
 
-export const likePicture = async ({ id }) =>
-    await makeApiCall(getLikeEndpoint(id), {
+export const likePicture = (id) =>
+    makeApiCall(getLikeEndpoint(id), {
         method: "POST",
     });
 
-export const unlikePicture = async ({ id }) =>
-    await makeApiCall(getUnlikeEndpoint(id), {
+export const unlikePicture = (id) =>
+    makeApiCall(getLikeEndpoint(id), {
         method: "DELETE",
     });

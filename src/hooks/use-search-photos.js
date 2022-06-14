@@ -6,6 +6,7 @@ export function useSearhPhotos({ query, page, perPage }) {
     const [photos, setPhotos] = useState([]);
 
     const fetchPhotos = useCallback(async () => {
+        console.log(1);
         const data = await searchPhotos({ query, page, perPage });
         setPhotos(data?.results || []);
     }, [query, page, perPage]);
