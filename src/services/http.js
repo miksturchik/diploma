@@ -4,7 +4,6 @@ import {
     SEARCH_PHOTOS,
     GET_TOKEN_URL,
     getLikeEndpoint,
-    getUnlikeEndpoint,
 } from "services/constants/urls";
 
 const buildToken = (token) => (token ? `Bearer ${token}` : "");
@@ -33,7 +32,6 @@ const makeFetch = (baseUrl) => async (path, params) => {
         if (result && result.status !== 200) {
             throw data;
         }
-        console.log(data);
         return data;
     } catch (error) {
         //EMPTY RESPONSE BODY CAUSE ERROR IN result.json();

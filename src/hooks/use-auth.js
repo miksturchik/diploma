@@ -17,7 +17,6 @@ export function useAuth() {
 
         if (code) {
             auth(code).then((data) => {
-                console.log(data);
                 setToken(data.access_token);
                 setIsAuthorized(true);
             });

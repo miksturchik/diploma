@@ -5,6 +5,8 @@ export const StyledSearchInput = styled.input`
     padding: 15px 10px;
     border-radius: 7px 0 0 7px;
     border: solid 1px #eaeaea;
+    color: #34383f;
+    font-size: 18px;
 `;
 
 export const StyledButton = styled.button`

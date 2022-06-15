@@ -23,7 +23,7 @@ export const SearchInput = ({ onSearch }) => {
     const handleCloseMenu = () => setMenuOpen(false);
 
     const handleInputChange = (e) => setQuery(e.target.value);
-    const handleInputBlur = () => setTimeout(handleCloseMenu, 100);
+    const handleInputBlur = () => setTimeout(handleCloseMenu, 200);
 
     const handleSugestClick = (suggest) => () => {
         setQuery(suggest);
