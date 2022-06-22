@@ -29,9 +29,6 @@ const makeFetch = (baseUrl) => async (path, params) => {
         const result = await fetch(request);
         data = await result.json();
 
-        if (result && result.status !== 200) {
-            throw data;
-        }
         return data;
     } catch (error) {
         //EMPTY RESPONSE BODY CAUSE ERROR IN result.json();

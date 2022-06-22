@@ -12,8 +12,8 @@ export const Card = ({
 }) => {
     const onBtnClick = async () => {
         const action = likedByUser ? unlikePicture : likePicture;
-        await action(id);
-        onPhotoUpdate();
+        const updatedDatta = await action(id);
+        onPhotoUpdate(updatedDatta.photo);
     };
 
     return (

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import hero from "../../assets/img/hero-image.jpg";
 
 export const StyledHero = styled.div`

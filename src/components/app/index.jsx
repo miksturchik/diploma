@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { GridLayout } from "components/grid-layout";
+import React, { useState, useCallback } from "react";
 import { Card } from "components/card";
 import { Header } from "components/header";
 import { Hero } from "components/hero";
@@ -10,15 +9,28 @@ import { useAuth } from "hooks/use-auth";
 import {
     StyledPageWrapper,
     StyledContentWrapper,
+    StyledGridLayout,
     StyledSpinner,
+    StyledGetMoreBtn,
 } from "./styled";
+import { getSuggestions } from "services/localstorage";
 
-export const App = () => {
-    const [query, setQuery] = useState("");
-    const { photos, loading, refetch } = useSearhPhotos({
+export const App = React.memo(() => {
+    const [query, setQuery] = useState(getSuggestions()[0] || "");
+    const [page, setPage] = useState(1);
+
+    const { photos, loading, hasMore, updateOnePhoto } = useSearhPhotos({
         query,
+        page,
     });
+
     const isAuthorized = useAuth();
+
+    const onPhotoUpdate = useCallback((photo) => {
+        updateOnePhoto(photo);
+    }, [query, updateOnePhoto]);
+
+    const fetchMore = useCallback(() => setPage(page + 1), [page]);
 
     return (
         <StyledPageWrapper>
@@ -31,14 +43,14 @@ export const App = () => {
                 {!photos.length && !loading ? (
                     <Plug query={query} />
                 ) : (
-                    <GridLayout>
+                    <StyledGridLayout>
                         {photos.map(
                             ({ id, alt_description, urls, liked_by_user }) => (
                                 <Card
                                     key={id}
                                     id={id}
                                     isAuthorized={isAuthorized}
-                                    onPhotoUpdate={refetch}
+                                    onPhotoUpdate={onPhotoUpdate}
                                     likedByUser={liked_by_user}
                                 >
                                     <img
@@ -48,10 +60,15 @@ export const App = () => {
                                 </Card>
                             ),
                         )}
-                    </GridLayout>
+                    </StyledGridLayout>
                 )}
                 {loading && <StyledSpinner width={30} height={30} />}
+                {!loading && hasMore && (
+                    <StyledGetMoreBtn onClick={fetchMore}>
+                        Get more
+                    </StyledGetMoreBtn>
+                )}
             </StyledContentWrapper>
         </StyledPageWrapper>
     );
-};
+});
