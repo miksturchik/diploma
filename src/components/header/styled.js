@@ -8,6 +8,12 @@ export const StyledHeader = styled.div`
     box-shadow: 0 11px 50px 0 rgb(0 0 0 / 3%);
     background-color: #f8f9fb;
     font-size: 18px;
+
+    nav {
+        width: 20%;
+        display: flex;
+        justify-content: space-around;
+    }
 `;
 
 export const StyledLink = styled.a`

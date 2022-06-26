@@ -33,4 +33,21 @@ export const StyledLikeBtn = styled.button`
     background: transparent;
 
     color: ${(props) => (props.active ? "#ed4956" : " #fff")};
+
+    &:hover {
+        color: ${(props) => (props.active ? "#fff" : " #ed4956")};
+    }
+`;
+
+export const StyledDownloadLink = styled.a`
+    outline: none;
+    position: absolute;
+    cursor: pointer;
+    bottom: 10px;
+    right: 50px;
+    color: #fff;
+    
+    &:hover {
+        color: #ed4956;
+    }
 `;
